@@ -1,0 +1,25 @@
+extends ../layouts/common.pug
+
+block content
+	.container
+		h1 List users
+		.d-flex
+			a(href='/users/create')
+				button.btn.btn-primary New
+			form.ml-auto.d-flex(action="/users/search", method="GET")
+				input.form-control(type="text", name="name")
+				button(class="btn btn-primary ml-2") Search
+		table.table.mt-2
+			tr.text-center
+				th Name
+				th Phone
+				th Update
+				th Delete
+			each user in users
+				tr.text-center
+					td=user.name
+					td=user.phone
+					td
+						a.btn.btn-light(href="/users/"+ user.id) Update
+					td
+						a.btn.btn-danger(href="/users/"+user.id+"/delete") Delete

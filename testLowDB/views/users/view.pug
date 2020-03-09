@@ -1,0 +1,15 @@
+extends ../layouts/common.pug
+
+block content
+	.container.mt-2
+		h1 Update User
+		.form-group
+			form(action='/users/'+user.id+'/update', method="POST")
+				.row
+					.col-md-6
+						label Name
+						input.form-control(type="text" name="name" value=user.name)
+					.col-md-6
+						label Phone
+						input.form-control(type="number" name="phone" value=user.phone)
+					button.btn.btn-warning.mt-2 Update
