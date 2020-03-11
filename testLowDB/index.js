@@ -1,9 +1,17 @@
-const express= require('express');
+require('dotenv').config();
 
-const userRoute= require('./routes/user.route');
+const express= require('express');
+var cookieParser = require('cookie-parser');
+
+const userRoute= require('./routes/user.route.js');
+const authRoute= require('./routes/auth.route.js');
+
+const authMiddleware= require('./middlewares/auth.middleware.js');
 
 const port=3000;
 const app=express();
+
+app.use(cookieParser('abjdiajsldja'));
 
 app.set('view engine', 'pug');
 app.set('views', './views');
@@ -15,8 +23,10 @@ app.get('/',function(req,res){
 	res.render('index');
 });
 
-app.use('/users',userRoute);
-app.use(express.static('public'))
+app.use('/users', authMiddleware.requireAuth, userRoute);
+app.use('/auth',authRoute);
+
+app.use(express.static('public'));
 
 app.listen(port,function(){
 	console.log("Server starting" + port+" ...");

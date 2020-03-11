@@ -3,7 +3,14 @@
     {
       "name": "duong",
       "phone": "0836142297",
+      "email": "huynhhuuy1@gmail.com",
+      "password": "2c300e4d60cd59c6a6ce040e1505e15e",
       "id": "Em4UZi41"
+    },
+    {
+      "name": "abc@gmail.com",
+      "phone": "123456",
+      "id": "I87M8EpW"
     }
   ]
 }
