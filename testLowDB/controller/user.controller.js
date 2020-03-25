@@ -25,6 +25,8 @@ module.exports.getCreate=function(req,res){
 
 module.exports.postCreate=function(req,res){
 	req.body.id=shortid.generate();
+	let path = req.file.path;
+	req.body.avatar= path.slice(6);// bỏ chữ public trong đường dẫn
 	db.get("users").push(req.body).write();
 	res.redirect("/users");
 }

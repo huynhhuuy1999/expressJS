@@ -23,7 +23,7 @@ module.exports.postLogin=function(req,res){
 		return;
 	}
 
-	res.cookie('userId',user.id,{
+	res.cookie('userId',user.id,{ //tạo cookie xác định người  dùng
 		signed: true
 	});
 	res.redirect('/users');

@@ -3,8 +3,8 @@ extends ../layouts/common.pug
 block content
 	.container
 		h1 Product
-			form.ml-auto.d-flex(action="", method="GET")
-				input.form-control(type="text", name="")
+			form.ml-auto.d-flex(action="/products/search", method="GET")
+				input.form-control(type="text", name="name")
 				button(class="btn btn-primary ml-2") Search
 		.row
 			each product in products
@@ -13,11 +13,13 @@ block content
 						img(src=product.image)
 						p.font-weight-bold=product.name
 						p=product.description
-		.float-right
-			ul.d-flex
-				each page in numberPage
-					li.pl-3.pr-3.border
-						a(href='products?page='+ page)=page
+						a(href="/cards/add/"+ product.id).btn.btn-primary Add to Card
+		if(numberPage)
+			.float-right
+				ul.d-flex
+					each page in numberPage
+						li.pl-3.pr-3.border
+							a(href='products?page='+ page)=page
 
 
 			
